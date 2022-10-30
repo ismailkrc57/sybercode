@@ -1,0 +1,25 @@
+<div class="card" style="width: 50rem;">
+  <div style="max-width: content-box" class="row d-flex flex-row justify-content-center">
+    <img style="object-fit:contain;max-width: fit-content" src="{{product.imageUrl}}" class="card-img-top" alt="...">
+  </div>
+  <div class="card-body">
+    <h1 class="card-title">Name: {{product.name}}</h1>
+    <h3 class="card-text">
+      Price:
+      {{ product.price| currency: 'TRY': 'symbol-narrow':'1.2-2' }}
+    </h3>
+    <h5>Quantity: {{product.qty}}</h5>
+    <br>
+    <hr>
+    <div class="div">Lorem<label [innerHTML]="product.name"></label> ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, aut blanditiis, cum,
+      distinctio ducimus fugiat mollitia quas quo quos sint <label [innerHTML]="product.name"></label> ullam velit vero Lorem ipsum dolor sit amet, consectetur
+      adipisicing elit. Ab doloribus <label [innerHTML]="sanitizer.bypassSecurityTrustHtml(product.name)"></label>ducimus est harum laudantium nemo quaerat quasi repellat temporibus voluptatum.
+      Eos, exercitationem, quia?
+    </div>
+  </div>
+  <div class="card-footer">
+    <div [routerLink]="['/dash']" class="btn btn-info btn-sm">Back</div>
+  </div>
+</div>
+
+

@@ -1,0 +1,33 @@
+
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5 d-flex flex-row justify-content-center">
+        <img src="./assets/images/logo.jpeg" class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form #loginForm="ngForm">
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">Username</label>
+            <input name="username" #username="ngModel" ngModel type="text" id="form3Example3" class="form-control form-control-lg"
+                   placeholder="Enter username" />
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <label class="form-label" for="form3Example4">Password</label>
+            <input name="password" #password="ngModel" ngModel  type="password" id="form3Example4" class="form-control form-control-lg"
+                   placeholder="Enter password" />
+          </div>
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button (click)="login(loginForm)" type="button" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

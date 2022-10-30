@@ -1,0 +1,21 @@
+<div class="row">
+  <div *ngFor="let product of products;index as i" class="mb-2 col-3">
+    <div class="form-group text-center card">
+      <img class="card-img-top d-flex flex-row align-self-center mt-1"
+           src="{{product.imageUrl}}"
+           style="width: 100px; height:100px">
+      <div class="card-body">
+        <h3 [innerHTML]="sanitizer.bypassSecurityTrustHtml(product.name)">{{product.name}}</h3>
+        <h4 class="text-danger">{{ product.price| currency: 'TRY': 'symbol-narrow':'1.2-2' }}</h4>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4"></div>
+          </div>
+        </div>
+        <button [routerLink]="['/dash',product.id]"  class="btn btn-primary mt-2">Detail</button>
+      </div>
+    </div>
+  </div>
+</div>

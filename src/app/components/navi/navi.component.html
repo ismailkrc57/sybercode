@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg bg-light mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand">Sybercode</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+        <div (click)="logout()" class="nav-item btn btn-danger mb-sm-2 mx-lg-5">
+          Exit
+        </div>
+        <div data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-item btn btn-info mb-sm-2 mx-lg-2">
+          Product Add
+        </div>
+        <div [routerLink]="['/dash/product-list']" class="nav-item  mb-sm-2 mx-lg-2 btn btn-success">
+          Product List
+        </div>
+      </ul>
+      <form #form="ngForm" class="d-flex" role="search">
+        <div class="d-flex" role="alert">
+          <div [innerHTML]="sanitizer.bypassSecurityTrustHtml(filterText)" class="mx-3"></div>
+        </div>
+        <input  (click)="filterText=''" name="filter" #filter="ngModel" ngModel class="form-control me-2" type="search" placeholder="Search"
+               aria-label="Search">
+        <button  (click)="filterText=filter.value;form.reset()" class="btn btn-outline-success"
+                type="submit">Search
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Product Name</label>
+            <input ngModel #name="ngModel" name="name" type="text" class="form-control" id="exampleInputEmail1"
+                   aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword2" class="form-label">Price</label>
+            <input ngModel #price="ngModel" name="price" type="number" class="form-control" id="exampleInputPassword2">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword3" class="form-label">Quantity per Unit</label>
+            <input ngModel #qty="ngModel" name="qty" type="number" class="form-control" id="exampleInputPassword3">
+          </div>
+          <div class="mb-3">
+            <label class="form-check-label" for="exampleCheck1">image</label>
+            <input (change)="upload($event)" ngModel #image="ngModel" name="image" type="file" class="form-control"
+                   id="exampleCheck1">
+          </div>
+          <button *ngIf="isAdded" (click)="add(addForm)" type="submit" class="btn btn-primary">Add</button>
+          <div *ngIf="!isAdded" class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
